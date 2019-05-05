@@ -1,0 +1,29 @@
+@font-face {font-family: "iconfont";
+  src: url('./iconfont.eot?t=1556756398056'); /* IE9 */
+  src: url('./iconfont.eot?t=1556756398056#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAPkAAsAAAAACLwAAAOVAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDDAqEbIQpATYCJAMQCwoABCAFhG0HYxumBxFVlL9kPw8cY+WYlfVK39uunE+V0ER6LgfPo858X5ITVU6BkJ0iw3ZEW28v8ERJgACCAj7emo7hqljnI1SX7PnWs2xn8g3d+bDO4zRKISQIx8XhuEWJzLcslzkmTeoCjANKxx4UWYEk6D3EW13mcQjgKKUG6dCpxwAsBn2cADJj6uSx2IQCU5EuWIRQwVKD7MLDqs0qDtjpfV8+Ui8LCk+jn9RnUscJtPm48+NuHcQCI3RAMJwOYFeBBmoAAzKk0NAPHQRq0Dg5YKiEZfUT+Lg7FuPjToex2L88EBQaJIQuiACmAV8fEtMiQ+DjLh2KI2SCkIujowkshlJAwoAp0U2h0SXqRcqUiUD2bIle3XoZfBsXXHIO3JYrIs4ZvepPjt0WveLybLmECS77/vnnRRl8cP9+CAoM2Peg0IFmgx+klPJOpjbOez+55GJTn+8NJ5uDrMu99WpCd8Xlas0eXqg85SCtyHxpicjtM8eSGuTqiTVx7+WZmYMzMgalpQ1ITx/o0+I0oELGqP2Hzl0oVJi7tfHB84cPFbjnyhv9kHEqV94SeXOdcrEnS4eyc+XNhXVvcKq+Gzm664Tso+GieR5N6v1nQOKxPKuCYKDFDgzwDF9PtmnDcHSlP58SeWMs0StPdKpCCDhWt6YMIytzqjVijOgVCk8VdaGuNu1l6FBpb1Adml0QRbUdJatWCXBHUTTgUNusLtR945alwysNPjppLBvUvXtqo0GlqMG0ioVTeg59/+ZwjTM6M0ufQSpS7dkLebKcOQDE6mzd2BtL39JtAPQ3/UP8hh/vu50fnbvFb+sbALK+DbkBjhhD86BFocEyXz+zYZlR2LrSLHEshmoyet3MsQo4DsTolnx+Q4gKNvaBsAkmC0pYSdCsCgiDqQEeXwMIsVqDU12y2pefWJJzANW8CIg83qDk8hK0PD4Ig/mCp5A/hORpCc6g8m/pqxQ77QVzxQqKJ3A59GSq1fHT92iubS5xtoc7o1h2Q+D66XCCPcoQM+zNhKoEJEMHMTkN23aAUYYLlurWqmPkeVT0JrccupmjPYFyClVA4Qmw0qBHTnXlZD6/h4yrVk4qSsqUZ0hYXD8IuPwGiETQNyq5lFesGyOkFAFEDDogJjrUGoEBGIsHXaCSctUdfKOIh5WoqcCdXtTd4RrA0fuZlGgx4pH72MemeVV1aG1ucJVESLBlqzsmlohbzvW04mza8mwGAAAA') format('woff2'),
+  url('./iconfont.woff?t=1556756398056') format('woff'),
+  url('./iconfont.ttf?t=1556756398056') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('./iconfont.svg?t=1556756398056#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.iconicon_addmessage:before {
+  content: "\eb8f";
+}
+
+.iconicon_addresslist:before {
+  content: "\eb90";
+}
+
+.iconicon_affiliations_li:before {
+  content: "\eb91";
+}
+
