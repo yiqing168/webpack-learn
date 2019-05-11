@@ -5,17 +5,45 @@ const TerserJSPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const prodConfig = {
-  mode: "production",
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
     })
   ],
   optimization: {
+    minimize: true,
     runtimeChunk: {
       name: "runtime"
     },
-    minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
+    minimizer: [
+      // 压缩js
+      new TerserJSPlugin({
+        terserOptions: {
+          parse: {
+            ecma: 8,
+          },
+          compress: {
+            ecma: 5,
+            warnings: false,
+            comparisons: false,
+            inline: 2,
+          },
+          mangle: {
+            safari10: true,
+          },
+          output: {
+            ecma: 5,
+            comments: false,
+            ascii_only: true,
+          },
+        },
+        parallel: true,
+        cache: true,
+        sourceMap: false,
+      }),
+      // 压缩css
+      new OptimizeCSSAssetsPlugin({})
+    ],
     splitChunks: {
       chunks: "all",
       minSize: 20000,                   //代码块最小大小
@@ -32,10 +60,10 @@ const prodConfig = {
           minChunks: 1,
         },
         'vendor-react': {
-          test: /react/,                    // 使用test来做路径匹配
+          test: /react/,                    // react 单独打包
           chunks: "initial",
           name: "vendor-react",
-          enforce: true,
+          enforce: true,                    //优先
         },
         default: {
           minChunks: 2,
@@ -47,4 +75,4 @@ const prodConfig = {
   }
 }
 
-module.exports = merge(commConfig, prodConfig);
+module.exports = merge(commConfig("production"), prodConfig);

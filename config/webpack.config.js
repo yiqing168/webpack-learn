@@ -4,8 +4,6 @@ const merge = require("webpack-merge");
 const commConfig = require("./webpack.comm.js");
 
 let devConfig = {
-  mode: "development",
-  devtool: 'cheap-module-eval-source-map',
   devServer: {
     contentBase: path.resolve(__dirname, "../client"),
     hot: true,
@@ -20,4 +18,4 @@ let devConfig = {
   ]
 }
 
-module.exports = merge(commConfig, devConfig);
+module.exports = merge(commConfig("development"), devConfig);
