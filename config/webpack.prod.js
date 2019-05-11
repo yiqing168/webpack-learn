@@ -46,25 +46,25 @@ const prodConfig = {
     ],
     splitChunks: {
       chunks: "all",
-      minSize: 20000,                   //代码块最小大小
-      minChunks: 1,                     //最少出现次数
-      maxAsyncRequests: 5,              //异步最大加载数
-      maxInitialRequests: 3,            //初次加载数
-      automaticNameDelimiter: '~',      //文件名称联接符
+      minSize: 20000,                      //代码块最小大小
+      minChunks: 1,                        //最少出现次数
+      maxAsyncRequests: 5,                 //异步最大加载数
+      maxInitialRequests: 3,               //初次加载数
+      automaticNameDelimiter: '~',         //文件名称联接符
       name: true,
-      cacheGroups: {                    //缓存组
+      cacheGroups: {                       //缓存组
         vendors: {
           test: /[\\/]node_modules[\\/]/,
-          priority: -10,                 //优先组
+          priority: -10,                   //优先组
           minSize: 30000,
           minChunks: 1,
         },
-        'vendor-react': {
-          test: /react/,                    // react 单独打包
-          chunks: "initial",
-          name: "vendor-react",
-          enforce: true,                    //优先
-        },
+        // 'vendor-react': {
+        //   test: /react/,                    // react 单独打包   已使用 dll 此处仅为说明用法
+        //   chunks: "initial",
+        //   name: "vendor-react",
+        //   enforce: true,                    //优先
+        // },
         default: {
           minChunks: 2,
           priority: -20,

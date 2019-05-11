@@ -4,9 +4,10 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require("webpack");
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
-const HappyPack = require('happypack');
-const os = require('os');
-const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
+// 新版webpack 4 中使用 HappyPack 不会加速打包 
+// const HappyPack = require('happypack');
+// const os = require('os');
+//const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 
 //路径设置
 const configPath = {
@@ -27,7 +28,7 @@ module.exports = function (webpackEnv) {
 
   // 处理css 
   const getStyleLoaders = (cssOptions, isLess) => {
-    const config = [
+    return [
       isEnvProduction ? {
         loader: MiniCssExtractPlugin.loader,
         options: {
@@ -45,9 +46,9 @@ module.exports = function (webpackEnv) {
             path: path.resolve(__dirname, "../postcss.config.js"),
           }
         }
-      }
-    ]
-    return config;
+      },
+      isLess && "less-loader"
+    ].filter(Boolean);
   };
 
   return {
@@ -90,7 +91,6 @@ module.exports = function (webpackEnv) {
             {
               loader: 'file-loader',
               options: {
-                limit: 10240,
                 name: 'static/file/[name].[hash:8].[ext]',
               }
             }
@@ -111,7 +111,7 @@ module.exports = function (webpackEnv) {
         {
           test: /\.(js|jsx)$/,
           //把对.js 的文件处理交给id为happyBabel 的HappyPack 的实例执行
-          loader: 'happypack/loader?id=happyBabel',
+          use: 'babel-loader',
           //排除node_modules 目录下的文件
           exclude: /node_modules/
         },
@@ -151,18 +151,6 @@ module.exports = function (webpackEnv) {
       isEnvProduction && new AddAssetHtmlPlugin({ filepath: require.resolve('../dll/vendors.dll.js') }),
       isEnvProduction && new webpack.DllReferencePlugin({
         manifest: require("../dll/manifest.json")
-      }),
-      new HappyPack({
-        //用id来标识 happypack处理那里类文件
-        id: 'happyBabel',
-        //如何处理  用法和loader 的配置一样
-        loaders: [{
-          loader: 'babel-loader',
-        }],
-        //共享进程池
-        threadPool: happyThreadPool,
-        //允许 HappyPack 输出日志
-        verbose: true,
       })
     ].filter(Boolean)
   }
